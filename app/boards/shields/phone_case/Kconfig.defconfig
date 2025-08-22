@@ -1,0 +1,25 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if ZMK_SHIELD_PHONE_CASE
+
+config ZMK_KEYBOARD_NAME
+    default "Phone Case"
+
+config ZMK_KEYMAP_TRANSFORM_ROW_SIZE
+    int "Keymap transform row size"
+    default 2
+
+config ZMK_KEYMAP_TRANSFORM_COL_SIZE
+    int "Keymap transform column size"
+    default 2
+
+# 添加蓝牙设备名称配置
+config BT_DEVICE_NAME
+    default "CHAO"
+
+# 启用电池报告
+config ZMK_BATTERY_REPORTING
+    default y
+
+endif

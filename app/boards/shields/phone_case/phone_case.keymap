@@ -1,0 +1,26 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            // 矩阵按键绑定，按照 2x2 矩阵的顺序
+            // row 1: UP, DOWN
+            // row 2: LEFT, RIGHT
+            bindings = <
+                &kp UP    &kp DOWN
+                &kp LEFT  &kp RIGHT
+            >;
+        };
+    };
+};

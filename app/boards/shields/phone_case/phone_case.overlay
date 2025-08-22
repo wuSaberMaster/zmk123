@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+/ {
+    chosen {
+        zmk,kscan = &kscan_matrix;
+    };
+
+    kscan_matrix: kscan_gpio_matrix {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN Matrix";
+
+        diode-direction = "col2row";
+        
+        row-gpios = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>,
+                    <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+
+        col-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>,
+                    <&gpio0 24 GPIO_ACTIVE_HIGH>;
+    };
+};
