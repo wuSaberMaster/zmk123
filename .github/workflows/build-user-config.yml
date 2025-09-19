@@ -152,12 +152,25 @@ jobs:
         shell: sh -x {0}
         run: |
           mkdir "${{ env.build_dir }}/artifacts"
+          
           if [ -f "${{ env.build_dir }}/zephyr/zmk.uf2" ]
           then
             cp "${{ env.build_dir }}/zephyr/zmk.uf2" "${{ env.build_dir }}/artifacts/${{ env.artifact_name }}.uf2"
           elif [ -f "${{ env.build_dir }}/zephyr/zmk.${{ inputs.fallback_binary }}" ]
           then
             cp "${{ env.build_dir }}/zephyr/zmk.${{ inputs.fallback_binary }}" "${{ env.build_dir }}/artifacts/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
+          fi
+
+            # 复制 .bin 文件
+          if [ -f "${{ env.build_dir }}/zephyr/zmk.bin" ]
+          then
+            cp "${{ env.build_dir }}/zephyr/zmk.bin" "${{ env.build_dir }}/artifacts/${{ env.artifact_name }}.bin"
+          fi
+          
+          # 复制 .hex 文件
+          if [ -f "${{ env.build_dir }}/zephyr/zmk.hex" ]
+          then
+            cp "${{ env.build_dir }}/zephyr/zmk.hex" "${{ env.build_dir }}/artifacts/${{ env.artifact_name }}.hex"
           fi
 
       - name: Archive (${{ env.display_name }})
