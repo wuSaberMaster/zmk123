@@ -159,7 +159,8 @@ jobs:
           then
             cp "${{ env.build_dir }}/zephyr/zmk.${{ inputs.fallback_binary }}" "${{ env.build_dir }}/artifacts/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
           fi
-     - name: Generate bin and hex files
+
+       - name: Generate bin and hex files
         shell: sh -x {0}
         run: |
     # 从elf文件生成bin和hex
@@ -170,7 +171,7 @@ jobs:
           else
             echo "zephyr.elf not found, cannot generate bin/hex"
           fi
-
+          
            
       - name: Archive (${{ env.display_name }})
         uses: actions/upload-artifact@v4
